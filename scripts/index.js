@@ -12,7 +12,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 
 const placesList = document.querySelector('.places__list');
 
-function createCard(element) {
+function createCard(element, deleteCard) {
   const card = cardTemplate.cloneNode(true);
 
   card.querySelector('.card__image').src = element.link;
@@ -24,11 +24,11 @@ function createCard(element) {
   return card;
 }
 
-function deleteCard(evt) {
-  evt.target.closest('.places__item').remove();  
+function deleteCard(element) {
+  element.target.closest('.places__item').remove();  
 }
 
 initialCards.forEach(function (element) {
-  const card = createCard(element);
+  const card = createCard(element, deleteCard);
   placesList.append(card);
 })
